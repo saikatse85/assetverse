@@ -18,14 +18,17 @@ const Footer = () => {
             Email:{" "}
             <a
               href="mailto:info@yourdomain.com"
-              className="text-primary hover:underline"
+              className="text-[#00e5ff] hover:text-[#00bcd4] hover:underline"
             >
               info@yourdomain.com
             </a>
           </p>
           <p className="dark:text-white">
             Phone:{" "}
-            <a href="tel:+1234567890" className="text-primary hover:underline">
+            <a
+              href="tel:+1234567890"
+              className="text-[#00e5ff] hover:text-[#00bcd4] hover:underline"
+            >
               +1 234 567 890
             </a>
           </p>
@@ -108,7 +111,7 @@ const Footer = () => {
 
       {/* Bottom Copyright */}
       <div className="border-t border-gray-200 dark:border-gray-700 mt-6 pt-4 text-center text-sm text-gray-500 dark:text-white">
-        © {new Date().getFullYear()} Your Company. All rights reserved.
+        © {new Date().getFullYear()} AssetVerse. All rights reserved.
       </div>
     </footer>
   );

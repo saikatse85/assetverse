@@ -22,7 +22,6 @@ const RequestAsset = () => {
       return data.filter((asset) => asset.availableQuantity > 0);
     },
   });
-  console.log(assets);
 
   // Submit Request
   const submitRequest = async () => {
@@ -124,7 +123,7 @@ const RequestAsset = () => {
                 Cancel
               </button>
               <button
-                className="bg-blue-600 px-4 py-2 text-white rounded"
+                className="bg-primary px-4 py-2 text-white rounded"
                 onClick={submitRequest}
                 disabled={loading}
               >

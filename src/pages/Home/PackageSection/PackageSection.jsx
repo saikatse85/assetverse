@@ -39,14 +39,14 @@ const PackagesSection = () => {
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition flex flex-col justify-between"
+            className="bg-white/5 dark:bg-white/10 p-8 rounded-xl shadow-lg hover:shadow-xl transition flex flex-col justify-between"
           >
             {/* Package Header */}
             <div className="mb-6 text-center">
-              <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">
+              <h3 className="text-2xl font-semibold mb-2 dark:text-white">
                 {pkg.name}
               </h3>
-              <p className="text-gray-500 dark:text-gray-300">
+              <p className=" dark:text-white">
                 Up to {pkg.employeeLimit} employees
               </p>
             </div>
@@ -54,10 +54,7 @@ const PackagesSection = () => {
             {/* Features */}
             <ul className="mb-6 space-y-2">
               {pkg.features.map((feature, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-2 text-gray-700 dark:text-gray-200"
-                >
+                <li key={i} className="flex items-center gap-2 dark:text-white">
                   <span className="text-primary">✔</span>
                   <span>{feature}</span>
                 </li>
@@ -66,7 +63,7 @@ const PackagesSection = () => {
 
             {/* Price & Button */}
             <div className="text-center mt-auto">
-              <p className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+              <p className="text-3xl font-bold mb-4 dark:text-white">
                 ${pkg.price}/month
               </p>
               <button className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-focus transition">

@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const DashboardLayout = () => {
-  const { user, role } = useAuth();
+  const { user } = useAuth();
 
   // Navbar-style dark/light mode
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -70,7 +70,7 @@ const DashboardLayout = () => {
                 to="/dashboard/payment-history"
                 className="hover:text-blue-500 font-medium px-2 py-1 rounded"
               >
-                🚀 Payment History
+                💳 Payment History
               </Link>
             </nav>
           </>
@@ -112,7 +112,7 @@ const DashboardLayout = () => {
         {/* Dark/Light Toggle */}
         <button
           onClick={toggleTheme}
-          className="mt-auto w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded font-medium"
+          className="mt-auto w-full py-2 bg-[#00e5ff] hover:bg-[#00bcd4] text-white rounded font-medium"
         >
           {theme === "light" ? "Dark Mode" : "Light Mode"}
         </button>

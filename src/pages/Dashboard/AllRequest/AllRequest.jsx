@@ -72,7 +72,7 @@ const AllRequests = () => {
 
       <div className="overflow-x-auto rounded-lg border">
         <table className="table w-full">
-          <thead className="bg-gray-200 dark:bg-gray-800 font-semibold">
+          <thead className="dark:text-white font-semibold">
             <tr>
               <th>#</th>
               <th>Asset Name</th>
