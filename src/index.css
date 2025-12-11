@@ -1,0 +1,31 @@
+/* ---------- MUST BE FIRST ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* ---------- TAILWIND + PLUGINS ---------- */
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #00e5ff;
+  --color-secondary: teal;
+}
+
+/* ---------- THEME CUSTOM BUTTON STYLE ---------- */
+[data-theme="light"] .my-btn {
+  background-color: #00e5ff;
+  border-color: #1EA1F1;
+}
+
+[data-theme="light"] .my-btn:hover {
+  background-color: #1C96E1;
+  border-color: #1C96E1;
+}
+
+/* ---------- GLOBAL FONT SETUP ---------- */
+body {
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

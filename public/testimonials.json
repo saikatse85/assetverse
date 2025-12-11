@@ -1,0 +1,20 @@
+[
+  {
+    "name": "John Doe",
+    "role": "CEO, Acme Corp",
+    "feedback": "AssetVerse has transformed the way we manage our corporate assets. Highly recommended!",
+    "rating": 5
+  },
+  {
+    "name": "Jane Smith",
+    "role": "HR Manager, Tech Solutions",
+    "feedback": "The platform is intuitive and easy to use. Our team productivity has increased significantly.",
+    "rating": 4
+  },
+  {
+    "name": "Robert Brown",
+    "role": "Operations Lead, Innovate Inc",
+    "feedback": "Excellent support and reliable features. AssetVerse is a must-have for companies of all sizes.",
+    "rating": 5
+  }
+]
