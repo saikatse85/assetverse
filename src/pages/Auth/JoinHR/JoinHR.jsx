@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthContext"; // adjust path
-import axios from "axios";
 import { imageUpload } from "../../../Utils";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const JoinHR = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -35,14 +35,15 @@ const JoinHR = () => {
     const imageFile = image[0];
     try {
       const imageURl = await imageUpload(imageFile);
-      console.log(imageURl);
 
       // 1️⃣ Create Firebase user
-      const result = await createUser(email, password);
-      console.log(result);
+      const user = await createUser(email, password);
 
       // 2️⃣ Update display name
       await updateUserProfile(name, imageURl);
+
+      const token = await user.getIdToken();
+      console.log("Firebase ID token:", token);
 
       // 3️⃣ Send HR data to backend
       const hrData = {
@@ -58,7 +59,7 @@ const JoinHR = () => {
         profileImage: imageURl,
       };
 
-      await axios.post("http://localhost:3000/users", hrData);
+      await axiosSecure.post("http://localhost:3000/users", hrData);
 
       setSuccess("HR Manager account created successfully!");
       reset();

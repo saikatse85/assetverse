@@ -166,13 +166,6 @@ const Navbar = () => {
                         >
                           Employee List
                         </Link>
-                        <Link
-                          onClick={closeMenu}
-                          to="/dashboard/profile"
-                          className="dropdown-item"
-                        >
-                          Profile
-                        </Link>
                       </div>
                     </>
                   )}

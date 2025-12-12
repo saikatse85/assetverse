@@ -28,7 +28,7 @@ const PackagesSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">
           Our Packages
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl">
+        <p className="text-gray-600 dark:text-gray-200 text-lg md:text-xl">
           Choose the package that suits your company's needs. Upgrade anytime as
           your business grows.
         </p>
@@ -39,7 +39,7 @@ const PackagesSection = () => {
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="bg-white/5 dark:bg-white/10 p-8 rounded-xl shadow-lg hover:shadow-xl transition flex flex-col justify-between"
+            className="dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl border border-gray-400 transition flex flex-col justify-between"
           >
             {/* Package Header */}
             <div className="mb-6 text-center">

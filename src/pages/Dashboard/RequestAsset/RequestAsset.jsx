@@ -1,12 +1,13 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const RequestAsset = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   console.log(user);
 
   const queryClient = useQueryClient(); // <-- Already Correct
@@ -18,7 +19,7 @@ const RequestAsset = () => {
   const { data: assets = [], isLoading } = useQuery({
     queryKey: ["assets"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:3000/assets");
+      const { data } = await axiosSecure.get("http://localhost:3000/assets");
       return data.filter((asset) => asset.availableQuantity > 0);
     },
   });
@@ -47,10 +48,8 @@ const RequestAsset = () => {
       role: user?.role,
     };
 
-    console.log("📤 Sending Request:", requestData);
-
     try {
-      const res = await axios.post(
+      const res = await axiosSecure.post(
         "http://localhost:3000/requests",
         requestData
       );

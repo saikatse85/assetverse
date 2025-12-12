@@ -151,29 +151,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
-  // ================= EMPLOYEE ROUTES ==================
-  // {
-  //   path: "/employee",
-  //   element: <EmployeeDashboard />, // you can wrap with PrivateRoute later
-  //   children: [
-  //     { path: "assets", element: <MyAssets /> },
-  //     { path: "team", element: <MyTeam /> },
-  //     { path: "request", element: <RequestAsset /> },
-  //     { path: "profile", element: <EmpProfile /> },
-  //   ],
-  // },
-
-  // ================= HR ROUTES ==================
-  // {
-  //   path: "/hr",
-  //   element: <HRDashboard />, // protect later
-  //   children: [
-  //     { path: "assets", element: <AssetList /> },
-  //     { path: "add-asset", element: <AddAsset /> },
-  //     { path: "requests", element: <AllRequests /> },
-  //     { path: "employees", element: <EmployeeList /> },
-  //     { path: "profile", element: <HRProfile /> },
-  //   ],
-  // },
 ]);

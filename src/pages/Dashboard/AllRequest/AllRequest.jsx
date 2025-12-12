@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllRequests = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   //  FETCH REQUESTS
   const { data: requests = [], refetch } = useQuery({
     queryKey: ["requests"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/requests");
+      const res = await axiosSecure.get("http://localhost:3000/requests");
       return res.data;
     },
   });
@@ -17,23 +18,25 @@ const AllRequests = () => {
   // APPROVE REQUEST
   const handleApprove = async (id, reqObj) => {
     try {
-      const res = await axios.post("http://localhost:3000/assigned-assets", {
-        assetId: reqObj.assetId,
-        assetName: reqObj.assetName,
-        assetType: reqObj.assetType,
-        employeeEmail: reqObj.requesterEmail,
-        employeeName: reqObj.requesterName,
-        companyName: reqObj.companyName,
-        assetImage: reqObj.assetImage || reqObj.productImage || "",
-        requestId: id,
-        role: reqObj.role,
-        requestDate: reqObj.requestDate,
-        profileImage: reqObj.profileImage,
-        employeeImage: reqObj.profileImage,
-        hrEmail: user?.email,
-        approvalDate: new Date(),
-      });
-      console.log(res.data);
+      const res = await axiosSecure.post(
+        "http://localhost:3000/assigned-assets",
+        {
+          assetId: reqObj.assetId,
+          assetName: reqObj.assetName,
+          assetType: reqObj.assetType,
+          employeeEmail: reqObj.requesterEmail,
+          employeeName: reqObj.requesterName,
+          companyName: reqObj.companyName,
+          assetImage: reqObj.assetImage || reqObj.productImage || "",
+          requestId: id,
+          role: reqObj.role,
+          requestDate: reqObj.requestDate,
+          profileImage: reqObj.profileImage,
+          employeeImage: reqObj.profileImage,
+          hrEmail: user?.email,
+          approvalDate: new Date(),
+        }
+      );
 
       if (res.data.success) {
         Swal.fire("Success", "Asset Assigned Successfully", "success");
@@ -54,7 +57,7 @@ const AllRequests = () => {
   //  REJECT REQUEST (Optional)
   const handleReject = async (id) => {
     try {
-      await axios.patch(`http://localhost:3000/requests/reject/${id}`, {
+      await axiosSecure.patch(`http://localhost:3000/requests/reject/${id}`, {
         status: "rejected",
       });
 

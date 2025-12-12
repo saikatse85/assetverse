@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyEmployeeList = () => {
   const { user } = useAuth();
   const hrEmail = user?.email;
-
+  const axiosSecure = useAxiosSecure();
   const {
     data: employees = [],
     isLoading,
@@ -15,7 +15,7 @@ const MyEmployeeList = () => {
   } = useQuery({
     queryKey: ["employees", hrEmail],
     queryFn: async () => {
-      const res = await axios.get(
+      const res = await axiosSecure.get(
         `http://localhost:3000/hr/employees/${hrEmail}`
       );
       return res.data;
@@ -35,7 +35,7 @@ const MyEmployeeList = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.patch(
+        await axiosSecure.patch(
           `http://localhost:3000/hr/remove-employee/${employeeId}`
         );
         Swal.fire("Removed!", "Employee has been removed.", "success");

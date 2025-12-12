@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthContext"; // Adjust path
-import axios from "axios";
 import { imageUpload } from "../../../Utils";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const JoinEmployee = () => {
+  const axiosSecure = useAxiosSecure();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const {
     register,
@@ -42,7 +43,7 @@ const JoinEmployee = () => {
         profileImage: imageURl,
         createdAt: new Date(),
       };
-      await axios.post("http://localhost:3000/users", userData);
+      await axiosSecure.post("http://localhost:3000/users", userData);
 
       setSuccess("Employee account created successfully!");
       reset();

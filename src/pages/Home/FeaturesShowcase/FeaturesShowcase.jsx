@@ -54,7 +54,7 @@ const FeaturesShowcase = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">
           Key Features
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl">
+        <p className="text-gray-400 dark:text-gray-300 text-lg md:text-xl">
           Discover why AssetVerse is the perfect solution for your corporate
           asset management.
         </p>

@@ -1,4 +1,5 @@
 import useAuth from "../hooks/useAuth";
+import { Navigate } from "react-router";
 
 const EmployeeRoute = ({ children }) => {
   const user = useAuth();

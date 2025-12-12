@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
   const logOut = async () => {
     setLoading(true);
     await signOut(auth);
-    setUser(null); // clear MongoDB user
+    setUser(null);
     setLoading(false);
   };
 
@@ -48,30 +48,35 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // Listen to Firebase auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser?.email) {
         try {
+          const token = await currentUser.getIdToken();
           const res = await axios.get(
             `http://localhost:3000/users/email/${currentUser.email}`
           );
+
           setUser({
             ...res.data,
             photoURL: currentUser.photoURL || "",
+            accessToken: token,
           });
         } catch (err) {
-          console.error("Failed to fetch user from DB:", err);
+          console.error("Failed to fetch user:", err);
           setUser(null);
         }
       } else {
         setUser(null);
       }
+
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
 
+  // AUTH CONTEXT VALUE
   const authInfo = {
     user,
     role: user?.role,

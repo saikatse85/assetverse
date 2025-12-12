@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
-import axios from "axios";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";
+import useRole from "../../../hooks/useRole";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyProfile = () => {
   const { user: loggedUser } = useAuth();
   const [user, setUser] = useState(null);
-
+  const [isRoleLoading] = useRole();
+  const axiosSecure = useAxiosSecure();
   // 🔹 Load User Profile from Backend
   useEffect(() => {
     if (!loggedUser?.email) return;
 
-    axios
+    axiosSecure
       .get(`http://localhost:3000/profile/${loggedUser.email}`)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
   }, [loggedUser]);
 
   // 🟦 Loading State
-  if (!user) return <LoadingSpinner></LoadingSpinner>;
+  if (!user || isRoleLoading) return <LoadingSpinner></LoadingSpinner>;
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

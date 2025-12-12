@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { imageUpload } from "../../../Utils/index";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddAsset = () => {
   const {
@@ -14,8 +15,9 @@ const AddAsset = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [imageURL, setImageURL] = useState("");
-
+  const axiosSecure = useAxiosSecure();
   const hrEmail = user?.email;
+  console.log("token", user?.accessToken);
 
   // Image Upload
   const handleImageChange = async (e) => {
@@ -47,13 +49,15 @@ const AddAsset = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/assets", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newAsset),
-      });
+      const response = await axiosSecure.post(
+        "http://localhost:3000/assets",
+        newAsset,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-      const result = await res.json();
+      const result = response.data;
 
       if (result.insertedId || result.success) {
         toast.success("✔ Asset Added Successfully!");

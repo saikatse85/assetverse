@@ -1,20 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const { data: payments = [], isLoading } = useQuery({
     queryKey: ["payments", user.email],
     queryFn: async () => {
-      const res = await axios.get(
+      const res = await axiosSecure.get(
         `http://localhost:3000/payments/${user.email}`
       );
       return res.data;
     },
   });
+
   console.log(payments);
 
   if (isLoading) return <LoadingSpinner />;

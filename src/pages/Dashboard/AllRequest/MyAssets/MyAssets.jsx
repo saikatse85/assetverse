@@ -4,11 +4,13 @@ import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpinner from "../../../../components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const MyAssets = () => {
   const { user } = useAuth();
   const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState(""); // "" | "Returnable" | "Non-returnable"
+  const [filterType, setFilterType] = useState("");
+  const axiosSecure = useAxiosSecure();
 
   // Fetch assigned assets for current employee
   const {
@@ -18,10 +20,9 @@ const MyAssets = () => {
   } = useQuery({
     queryKey: ["assignedAssets", user?.email],
     queryFn: async () => {
-      const res = await axios.get(
+      const res = await axiosSecure.get(
         `http://localhost:3000/assigned-assets/${user?.email}`
       );
-      console.log("📥 Assigned Assets from backend:", res.data);
       return res.data;
     },
     enabled: !!user?.email,

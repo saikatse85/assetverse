@@ -30,7 +30,6 @@ const PaymentSuccess = () => {
 
     verifyPayment();
   }, [session_id]);
-  console.log(paymentData);
   return (
     <div className="min-h-screen flex items-center justify-center text-center">
       <div className="p-8 rounded-md shadow-md bg-white max-w-md">
