@@ -9,7 +9,7 @@ const Logo = () => {
         alt="logo"
       />
       <h2 className="text-xl md:text-3xl font-bold tracking-wide">
-        AssetVerse HR
+        AssetVerse
       </h2>
     </div>
   );
