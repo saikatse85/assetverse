@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthContext"; // Adjust path
 import { imageUpload } from "../../../Utils";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router";
 
 const JoinEmployee = () => {
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const {
     register,
@@ -49,6 +51,7 @@ const JoinEmployee = () => {
       );
 
       setSuccess("Employee account created successfully!");
+      navigate("/");
       reset();
     } catch (err) {
       console.error(err);

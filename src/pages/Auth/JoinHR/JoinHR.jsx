@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthContext"; // adjust path
 import { imageUpload } from "../../../Utils";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router";
 
 const JoinHR = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,12 +39,10 @@ const JoinHR = () => {
       const imageURl = await imageUpload(imageFile);
 
       //Create Firebase user
-      const user = await createUser(email, password);
+      await createUser(email, password);
 
       //Update display name
       await updateUserProfile(name, imageURl);
-
-      await user.getIdToken();
 
       // Send HR data to backend
       const hrData = {
@@ -64,6 +64,7 @@ const JoinHR = () => {
       );
 
       setSuccess("HR Manager account created successfully!");
+      navigate("/");
       reset();
     } catch (err) {
       console.error(err);
