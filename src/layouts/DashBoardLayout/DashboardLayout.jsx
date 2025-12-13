@@ -69,6 +69,9 @@ const DashboardLayout = () => {
               <ActiveNavLink to="/dashboard/payment-history">
                 💳 Payment History
               </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/hr-analytics">
+                📊 HR Analytics
+              </ActiveNavLink>
             </nav>
           </>
         )}

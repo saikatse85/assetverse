@@ -28,6 +28,7 @@ import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import AboutUs from "../components/Shared/Footer/AboutUs";
 import Services from "../components/Shared/Footer/Services";
 import Contact from "../components/Shared/Footer/Contact";
+import HRAnalytics from "../pages/Dashboard/HR AnalyTics/HrAnalytics";
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +127,14 @@ export const router = createBrowserRouter([
             element: (
               <HRRoute>
                 <PaymentHistory></PaymentHistory>
+              </HRRoute>
+            ),
+          },
+          {
+            path: "hr-analytics",
+            element: (
+              <HRRoute>
+                <HRAnalytics></HRAnalytics>
               </HRRoute>
             ),
           },

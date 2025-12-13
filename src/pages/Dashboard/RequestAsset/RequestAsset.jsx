@@ -104,7 +104,7 @@ const RequestAsset = () => {
       {/* Modal */}
       {selectedAsset && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center">
-          <div className="bg-white p-6 rounded w-96 shadow-lg">
+          <div className="bg-base-100 dark:bg-white/30 p-6 rounded w-96 shadow-lg">
             <h3 className="text-lg font-bold mb-2">
               Request: {selectedAsset.productName}
             </h3>

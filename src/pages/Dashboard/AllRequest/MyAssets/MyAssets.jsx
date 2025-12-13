@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpinner from "../../../../components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";
@@ -54,7 +53,7 @@ const MyAssets = () => {
 
   const handleReturn = async (_id) => {
     try {
-      await axios.patch(
+      await axiosSecure.patch(
         `https://assetverse-server-lyart.vercel.app/assigned-assets/return/${_id}`
       );
       refetch();

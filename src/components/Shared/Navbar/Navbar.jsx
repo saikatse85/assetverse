@@ -166,6 +166,13 @@ const Navbar = () => {
                         >
                           Employee List
                         </ActiveNavLink>
+                        <ActiveNavLink
+                          onClick={closeMenu}
+                          to="/dashboard/hr-analytics"
+                          className="dropdown-item"
+                        >
+                          HR Analytics
+                        </ActiveNavLink>
                       </div>
                     </>
                   )}
