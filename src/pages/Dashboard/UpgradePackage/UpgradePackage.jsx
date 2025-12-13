@@ -3,10 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UpgradePackage = () => {
   const { user } = useAuth();
-
+  const axiosSecure = useAxiosSecure();
   // Load packages with Tanstack Query
   const {
     data: packages = [],
@@ -15,9 +16,8 @@ const UpgradePackage = () => {
   } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
-      const res = await fetch("/packages.json");
-      if (!res.ok) throw new Error("Failed to load packages");
-      return res.json();
+      const res = await axiosSecure("/packages");
+      return res.data;
     },
   });
 
@@ -25,22 +25,14 @@ const UpgradePackage = () => {
 
   const handleCheckout = async (pkg) => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/create-payment-session",
-        {
-          email: user.email,
-          packageName: pkg.name,
-          price: pkg.price,
-          employeeLimit: pkg.employeeLimit,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const { data } = await axiosSecure.post("/create-payment-session", {
+        email: user.email,
+        packageName: pkg.name,
+        price: pkg.price,
+        employeeLimit: pkg.employeeLimit,
+      });
 
-      if (data.url) {
+      if (data?.url) {
         window.location.href = data.url;
       } else {
         alert("Stripe URL Missing!");

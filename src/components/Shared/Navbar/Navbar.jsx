@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import Logo from "../Logo/Logo";
+import ActiveNavLink from "../ActiveNavLink/ActiveNavLink";
 
 const Navbar = () => {
   const { user, logOut, role } = useAuth();
@@ -29,32 +30,9 @@ const Navbar = () => {
 
           {/* Public Links only when user NOT logged in */}
           <div className="hidden md:flex gap-6 text-[16px] font-medium">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-primary font-bold" : "hover:text-primary"
-              }
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              to="/join-employee"
-              className={({ isActive }) =>
-                isActive ? "text-primary font-bold" : "hover:text-primary"
-              }
-            >
-              Join as Employee
-            </NavLink>
-
-            <NavLink
-              to="/join-hr"
-              className={({ isActive }) =>
-                isActive ? "text-primary font-bold" : "hover:text-primary"
-              }
-            >
-              Join as HR Manager
-            </NavLink>
+            <ActiveNavLink to="/">Home</ActiveNavLink>
+            <ActiveNavLink to="/join-employee">Join as Employee</ActiveNavLink>
+            <ActiveNavLink to="/join-hr">Join as HR Manager</ActiveNavLink>
           </div>
         </div>
 
@@ -99,38 +77,46 @@ const Navbar = () => {
                     <>
                       <div className="flex flex-col py-2 ml-5">
                         <div className="flex flex-col">
-                          <p className="text-green-600">{user?.email}</p>
-                          <p className="text-green-600">Role:{user?.role}</p>
+                          <p className="text-primary">
+                            Mail:{" "}
+                            <span className="text-secondary">
+                              {user?.email}
+                            </span>
+                          </p>
+                          <p className="text-primary">
+                            Role:{" "}
+                            <span className="text-secondary">{user?.role}</span>
+                          </p>
                           <div className="divider"></div>
                         </div>
-                        <Link
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/my-assets"
                           className="dropdown-item"
                         >
                           My Assets
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
-                          to="/employee/team"
+                          to="/dashboard/my-team"
                           className="dropdown-item"
                         >
                           My Team
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/request-assets"
                           className="dropdown-item"
                         >
                           Request Asset
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
-                          to="/employee/profile"
+                          to="/dashboard/profile"
                           className="dropdown-item"
                         >
                           Profile
-                        </Link>
+                        </ActiveNavLink>
                       </div>
                     </>
                   )}
@@ -139,36 +125,47 @@ const Navbar = () => {
                   {role === "hr" && (
                     <>
                       <div className="flex flex-col py-2 ml-5">
-                        <p className="text-green-600">{user?.email}</p>
-                        <p className="text-green-600">{user?.role}</p>
-                        <Link
+                        <div className="flex flex-col">
+                          <p className="text-primary">
+                            Mail:{" "}
+                            <span className="text-secondary">
+                              {user?.email}
+                            </span>
+                          </p>
+                          <p className="text-primary">
+                            Role:{" "}
+                            <span className="text-secondary">{user?.role}</span>
+                          </p>
+                          <div className="divider"></div>
+                        </div>
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/asset-list"
                           className="dropdown-item"
                         >
                           Asset List
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/add-asset"
                           className="dropdown-item"
                         >
                           Add Asset
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/all-requests"
                           className="dropdown-item"
                         >
                           All Requests
-                        </Link>
-                        <Link
+                        </ActiveNavLink>
+                        <ActiveNavLink
                           onClick={closeMenu}
                           to="/dashboard/employee-list"
                           className="dropdown-item"
                         >
                           Employee List
-                        </Link>
+                        </ActiveNavLink>
                       </div>
                     </>
                   )}

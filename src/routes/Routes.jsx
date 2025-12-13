@@ -25,6 +25,9 @@ import MyAssets from "../pages/Dashboard/AllRequest/MyAssets/MyAssets";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import MyTeam from "../pages/Dashboard/MyTeam/MyTeam";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import AboutUs from "../components/Shared/Footer/AboutUs";
+import Services from "../components/Shared/Footer/Services";
+import Contact from "../components/Shared/Footer/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +52,18 @@ export const router = createBrowserRouter([
       {
         path: "/join-hr",
         element: <JoinHR />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "dashboard",

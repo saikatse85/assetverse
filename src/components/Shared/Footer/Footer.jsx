@@ -4,6 +4,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import ActiveNavLink from "../ActiveNavLink/ActiveNavLink";
 
 const Footer = () => {
   return (
@@ -39,40 +40,14 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4 dark:text-white">
             Quick Links
           </h3>
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="/"
-                className="hover:text-primary dark:text-white transition"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about"
-                className="hover:text-primary dark:text-white transition"
-              >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="/services"
-                className="hover:text-primary dark:text-white transition"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact"
-                className="hover:text-primary dark:text-white transition"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
+          <div className="space-y-2">
+            <div className="md:flex flex-col gap-6 text-[16px] font-medium">
+              <ActiveNavLink to="/">Home</ActiveNavLink>
+              <ActiveNavLink to="/about-us">About Us</ActiveNavLink>
+              <ActiveNavLink to="/services">Services</ActiveNavLink>
+              <ActiveNavLink to="contact">Contact</ActiveNavLink>
+            </div>
+          </div>
         </div>
 
         {/* Social Media */}

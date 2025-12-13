@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import ActiveNavLink from "../../components/Shared/ActiveNavLink/ActiveNavLink";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
@@ -21,7 +22,7 @@ const DashboardLayout = () => {
 
   return (
     <div
-      className={`flex min-h-screen ${
+      className={`flex h-screen overflow-hidden ${
         theme === "dark"
           ? "dark bg-gray-900 text-white"
           : "bg-gray-100 text-gray-900"
@@ -31,10 +32,9 @@ const DashboardLayout = () => {
       <aside
         className={`${
           theme === "dark" ? "bg-gray-800" : "bg-white"
-        } w-72 shadow-md p-6 fixed lg:static top-0 left-0 h-auto z-40 transform transition-transform duration-300
-        ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        }`}
+        } w-72 shadow-md p-6 fixed lg:static top-0 left-0 h-full z-40
+  transform transition-transform duration-300
+  ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         {/* Close button only mobile */}
         <button
@@ -51,36 +51,24 @@ const DashboardLayout = () => {
           <>
             <h3 className="text-lg font-semibold mb-2">HR MANAGER</h3>
             <nav className="space-y-3 mb-6 flex flex-col">
-              <Link to="/dashboard/asset-list" className="hover:text-blue-500">
+              <ActiveNavLink to="/dashboard/asset-list">
                 📦 Asset List
-              </Link>
-              <Link to="/dashboard/add-asset" className="hover:text-blue-500">
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/add-asset">
                 ➕ Add an Asset
-              </Link>
-              <Link
-                to="/dashboard/employee-list"
-                className="hover:text-blue-500"
-              >
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/employee-list">
                 👥 My Employee List
-              </Link>
-              <Link
-                to="/dashboard/all-requests"
-                className="hover:text-blue-500"
-              >
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/all-requests">
                 📄 All Requests
-              </Link>
-              <Link
-                to="/dashboard/upgrade-package"
-                className="hover:text-blue-500"
-              >
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/upgrade-package">
                 🚀 Upgrade Package
-              </Link>
-              <Link
-                to="/dashboard/payment-history"
-                className="hover:text-blue-500"
-              >
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/payment-history">
                 💳 Payment History
-              </Link>
+              </ActiveNavLink>
             </nav>
           </>
         )}
@@ -90,21 +78,14 @@ const DashboardLayout = () => {
           <>
             <h3 className="text-lg font-semibold mb-2">EMPLOYEE</h3>
             <nav className="space-y-3 flex flex-col">
-              <Link to="/dashboard/my-assets" className="hover:text-blue-500">
+              <ActiveNavLink to="/dashboard/my-assets">
                 📁 My Assets
-              </Link>
-              <Link
-                to="/dashboard/request-assets"
-                className="hover:text-blue-500"
-              >
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/request-assets">
                 📝 Request an Asset
-              </Link>
-              <Link to="/dashboard/my-team" className="hover:text-blue-500">
-                🏢 My Team
-              </Link>
-              <Link to="/dashboard/profile" className="hover:text-blue-500">
-                🙍 Profile
-              </Link>
+              </ActiveNavLink>
+              <ActiveNavLink to="/dashboard/my-team">🏢 My Team</ActiveNavLink>
+              <ActiveNavLink to="/dashboard/profile">🙍 Profile</ActiveNavLink>
             </nav>
           </>
         )}
@@ -119,12 +100,12 @@ const DashboardLayout = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col lg:ml-0">
+      <div className="flex-1 flex flex-col overflow-y-auto lg:ml-0">
         {/* Header */}
         <header
           className={`${
             theme === "dark" ? "bg-gray-800" : "bg-white"
-          } p-4 shadow flex justify-between items-center`}
+          } p-4 shadow h-16 shrink-0 flex justify-between items-center`}
         >
           {/* Mobile Menu Button */}
           <button
@@ -143,7 +124,7 @@ const DashboardLayout = () => {
           ></div>
         </header>
 
-        <main className="p-6 space-y-8 flex-1">
+        <main className="p-6 space-y-8 flex-1 overflow-y-auto">
           <Outlet />
         </main>
       </div>
