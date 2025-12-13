@@ -2,13 +2,29 @@
 
 ## 📌 Purpose
 
-A brief description of what this project does and why it exists. Explain the problem it solves and who it is for.
+AssetVerse is a full-stack B2B Corporate Asset Management System designed to help organizations efficiently track, assign, and manage physical assets across multiple departments and companies. The platform provides a centralized solution for HR managers to maintain complete visibility of company assets while enabling employees to request, receive, and return assets in a structured and accountable manner.
+
+The main purpose of this project is to prevent asset loss, improve accountability, and reduce administrative overhead by automating the entire asset lifecycle—from inventory management to employee assignment and return tracking. AssetVerse supports multi-company employee affiliations, role-based access control, and subscription-based employee limits, making it suitable for growing organizations.
+
+- This system ensures:
+
+- Transparent asset ownership and history tracking
+
+- Efficient HR operations through approval workflows
+
+- Accurate differentiation between returnable and non-returnable assets
+
+- Scalable package management with Stripe payment integration
+
+- Secure authentication and authorization using JWT
+
+Overall, AssetVerse demonstrates a real-world enterprise-level solution that combines modern UI/UX, robust backend architecture, and secure role-based workflows to solve common corporate asset management challenges.
 
 ## 🌐 Live URL
 
 **Live Site:** [https://your-live-url.com](https://your-live-url.com)
 
-## ✨ Key Features
+## Key Features
 
 - Feature 1: Short explanation
 - Feature 2: Short explanation
@@ -16,10 +32,10 @@ A brief description of what this project does and why it exists. Explain the pro
 - Responsive design
 - Secure authentication (if applicable)
 
-## 📦 NPM Packages Used
+## NPM Packages Used
 
 - **react** – Frontend library
-- **react-router-dom** – Routing
+- **react-router** – Routing
 - **axios** – API requests
 - **express** – Backend framework
 - **mongodb** – Database
@@ -32,10 +48,10 @@ A brief description of what this project does and why it exists. Explain the pro
 
 ```bash
 # Clone the repository client
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/saikatse85/assetverse-client.git
 
 # Clone the repository server
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/saikatse85/assetverse-server.git
 
 # Install dependencies
 npm install
