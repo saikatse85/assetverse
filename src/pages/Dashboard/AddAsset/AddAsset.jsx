@@ -88,7 +88,7 @@ const AddAsset = () => {
               required: "Product name is required",
             })}
             placeholder="Enter product name"
-            className="input input-bordered w-full mt-2 bg-white dark:bg-gray-700 dark:text-white"
+            className="input input-bordered w-full mt-2 bg-base-100 dark:bg-gray-700 dark:text-black"
           />
           {errors.productName && (
             <p className="text-red-500">{errors.productName.message}</p>
@@ -104,7 +104,7 @@ const AddAsset = () => {
               required: "Company name is required",
             })}
             placeholder="Enter company name"
-            className="input input-bordered w-full mt-2 bg-white dark:bg-gray-700 dark:text-white"
+            className="input input-bordered w-full mt-2 bg-base-100 dark:bg-gray-700 dark:text-white"
           />
           {errors.companyName && (
             <p className="text-red-500">{errors.companyName.message}</p>
@@ -118,7 +118,7 @@ const AddAsset = () => {
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="file-input file-input-bordered w-full mt-2 bg-white dark:bg-gray-700 dark:text-white"
+            className="file-input file-input-bordered w-full mt-2 bg-base-100 dark:bg-gray-700 dark:text-white"
           />
           {loading && <p className="text-blue-400">Uploading...</p>}
           {imageURL && <img src={imageURL} className="w-24 mt-2 rounded" />}
@@ -129,7 +129,7 @@ const AddAsset = () => {
           <label className="font-medium">Product Type:</label>
           <select
             {...register("productType", { required: "Select product type" })}
-            className="select select-bordered w-full mt-2 bg-white dark:bg-gray-700 dark:text-white"
+            className="select select-bordered w-full mt-2 bg-base-100 dark:bg-gray-700 dark:text-black"
           >
             <option value="">Select Type</option>
             <option value="Returnable">Returnable</option>
@@ -144,7 +144,7 @@ const AddAsset = () => {
             type="number"
             min="1"
             {...register("productQuantity", { required: "Quantity required" })}
-            className="input input-bordered w-full mt-2 bg-white dark:bg-gray-700 dark:text-white"
+            className="input input-bordered w-full mt-2 bg-base-100 dark:bg-gray-700 dark:text-black"
           />
         </div>
 
