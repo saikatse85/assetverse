@@ -64,8 +64,8 @@ const HeroBanner = () => {
           className="flex justify-center md:justify-start gap-4"
         >
           <Link
-            to="/signup"
-            className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-focus transition"
+            to="/login"
+            className="px-6 py-3 bg-[#00e5ff] text-white rounded-lg font-semibold hover:bg-primary-focus transition"
           >
             Get Started
           </Link>
